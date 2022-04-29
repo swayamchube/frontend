@@ -1,0 +1,8 @@
+<p>
+	<input type="text" [(ngModel)]="guessed_word"/> 
+	<button type="submit" (click)="onSubmitGuess()">Guess</button>
+</p>
+
+<app-chat #chatchild></app-chat>
+
+<img [src]="image_uri" width="200px" height="200px"/>

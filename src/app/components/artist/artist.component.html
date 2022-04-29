@@ -1,0 +1,6 @@
+<div>
+	<app-artist-image [m_uri]="mainImageURI"></app-artist-image>
+</div>
+<div *ngFor="let uri of image_uri">
+	<app-artist-image [m_uri] = "uri" (onImageClick)="onImageClick($event)" ></app-artist-image>
+</div>
