@@ -13,9 +13,9 @@ export class DetectiveComponent implements OnInit {
 	@Input() userid: string;
 	@Input() socket: Socket;
 	@Input() _func: any;
-	@ViewChild('chatchild') chat_child: ChatComponent;
 	timer: number = 0;
 
+	guessses:string[] = []
 	constructor() {
 		setInterval(() => {if (this.timer > 0) this.timer--;}, 1000);
 	}
@@ -26,7 +26,7 @@ export class DetectiveComponent implements OnInit {
 			(data: string) => {
 				let json_data: JSON = JSON.parse(data);
 				let word = json_data['word'];
-				this.chat_child.addMessage(word);
+				this.guessses.push(word);
 			}
 		)
 
