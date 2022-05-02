@@ -12,8 +12,7 @@ export class DetectiveComponent implements OnInit {
 	image_uri: string;
 	@Input() userid: string;
 	@Input() socket: Socket;
-	@ViewChild('chatchild') chat_child: ChatComponent;
-
+	guessses:string[] = []
 	constructor() {
 	}
 
@@ -23,7 +22,7 @@ export class DetectiveComponent implements OnInit {
 			(data: string) => {
 				let json_data: JSON = JSON.parse(data);
 				let word = json_data['word'];
-				this.chat_child.addMessage(word);
+				this.guessses.push(word);
 			}
 		)
 
@@ -49,6 +48,8 @@ export class DetectiveComponent implements OnInit {
 	}
 
 	onSubmitGuess(): void {
+		//remove this:
+		// this.guessses.push(this.guessed_word)
 		this.socket.emit(
 			'wordguess',
 			{
