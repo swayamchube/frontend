@@ -2,8 +2,8 @@
 	<app-login (onLogin)="onLogin($event)"></app-login>
 </ng-template>
 <ng-template [ngIf]="state === 1">
-	<app-artist [socket]="socket" #artchild></app-artist>
+	<app-artist [socket]="socket" [remaining_time]="remaining_time" [_func]="_func" #artchild></app-artist>
 </ng-template>
 <ng-template [ngIf]="state === 2">
-	<app-detective [socket]="socket" [userid]="userid"></app-detective>
+	<app-detective [socket]="socket" [userid]="userid" [_func]="_func"></app-detective>
 </ng-template>

@@ -20,6 +20,9 @@ export class AppComponent {
 	socket: Socket;
 	chosen_word: string;
 	@ViewChild('artchild') art_child: ArtistComponent;
+	remaining_time: number = 60;
+	_func: any;
+	startTime: number = 0;
 
 	onLogin(json_object: JSON): void {
 		let username: string = json_object['username'];
@@ -68,6 +71,24 @@ export class AppComponent {
 					this.socket.emit('setword', { 'word': this.chosen_word, })
 				}
 			}
+		);
+
+		this.socket.on(
+			'startround',
+			(data: string) => {
+				this.remaining_time = 60;
+				this._func = setInterval(() => {
+					this.remaining_time--;
+					if (this.remaining_time <= 0 && this.state == states.ARTIST) {
+						this.clear();
+						this.socket.emit('timeup', { });
+					}
+				}, 1000);
+			}
 		)
+	}
+
+	clear(): void {
+		clearInterval(this._func);
 	}
 }

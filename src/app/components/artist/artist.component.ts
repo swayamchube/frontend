@@ -10,6 +10,8 @@ export class ArtistComponent implements OnInit {
 	mainImageURI: string = 'https://i.imgur.com/8nLFCVP.png';
 	image_uri: string[] = ['https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280', 'https://images.pexels.com/photos/3726525/pexels-photo-3726525.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280', 'https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280', 'https://images.pexels.com/photos/978947/pexels-photo-978947.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280',];
 	@Input() socket: Socket;
+	@Input() remaining_time: number;
+	@Input() _func: any;
 	constructor() { }
 
 	ngOnInit(): void {
@@ -25,6 +27,11 @@ export class ArtistComponent implements OnInit {
 				}
 			}
 		);
+
+		this.socket.on(
+			'winner',
+			(data: string) => clearInterval(this._func)
+		)
 	}
 
 	onImageClick(uri: string) {

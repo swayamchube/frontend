@@ -12,9 +12,12 @@ export class DetectiveComponent implements OnInit {
 	image_uri: string;
 	@Input() userid: string;
 	@Input() socket: Socket;
+	@Input() _func: any;
 	@ViewChild('chatchild') chat_child: ChatComponent;
+	timer: number = 0;
 
 	constructor() {
+		setInterval(() => {if (this.timer > 0) this.timer--;}, 1000);
 	}
 
 	ngOnInit(): void {
@@ -37,8 +40,13 @@ export class DetectiveComponent implements OnInit {
 		this.socket.on(
 			'winner',
 			(data: string) => {
-				if (data === this.userid) {
+				if (data === '-1') {
+					// time's up. display a suitable message
+					window.alert('Time up');
+				}
+				else if (data === this.userid) {
 					console.log('I won!');
+					clearInterval(this._func);
 				}
 				else {
 					// TODO: Implement this
@@ -49,11 +57,18 @@ export class DetectiveComponent implements OnInit {
 	}
 
 	onSubmitGuess(): void {
-		this.socket.emit(
-			'wordguess',
-			{
-				"word": this.guessed_word
-			}
-		)
+		if (this.timer != 0) {
+			window.alert("you're in cooldown");
+			return;
+		}
+		else {
+			this.socket.emit(
+				'wordguess',
+				{
+					"word": this.guessed_word
+				}
+			);
+			this.timer = 3;
+		}
 	}
 }

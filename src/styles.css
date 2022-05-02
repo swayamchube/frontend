@@ -6,3 +6,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .page-container {
 	padding-top: 10px;
 }
+
+.timer {
+	position: absolute;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 30px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
