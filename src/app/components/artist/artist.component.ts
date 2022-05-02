@@ -28,7 +28,9 @@ export class ArtistComponent implements OnInit {
 	}
 
 	onImageClick(uri: string) {
+		console.log("clicked");
 		this.mainImageURI = uri;
+		window.scrollTo(0, 0);
 		let index: number = this.image_uri.findIndex((value) => (value === uri));
 		this.socket.emit('setpic', { "url": uri, })
 	}

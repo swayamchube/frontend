@@ -1,6 +1,11 @@
-<div>
-	<app-artist-image [m_uri]="mainImageURI"></app-artist-image>
+<div class="page-container">
+<mat-card class="main-image-container">
+	<img mat-card-sm-image class="main-image" [src]="mainImageURI" alt="" srcset=""/>
+</mat-card>
+
+<div class="options-container">
+	<span *ngFor="let uri of image_uri" style="padding: 10px;">
+		<app-artist-image [m_uri]="uri" (onImageClick)="onImageClick($event)"></app-artist-image>
+	</span>
 </div>
-<div *ngFor="let uri of image_uri">
-	<app-artist-image [m_uri] = "uri" (onImageClick)="onImageClick($event)" ></app-artist-image>
 </div>

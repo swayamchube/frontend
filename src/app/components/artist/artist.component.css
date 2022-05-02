@@ -1,0 +1,24 @@
+.main-image-container {
+	margin: auto;
+	max-width: fit-content;
+	border: 2px solid black;
+	margin-bottom: 20px;
+}
+
+.main-image {
+	height: 400px;
+	width: 400px;
+}
+
+.options-container {
+	max-width: fit-content;
+	margin: auto;
+}
+
+.options-image {
+	border: 1px solid black;
+}
+
+.options-image:hover {
+	border: 3px solid green;
+}

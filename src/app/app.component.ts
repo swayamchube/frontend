@@ -60,6 +60,7 @@ export class AppComponent {
 				let json_data: JSON = JSON.parse(data);
 				this.state = (json_data['artistid'] === this.userid? states.ARTIST : states.DET)
 				if (this.state === states.ARTIST) {
+					// this guy is chosen to be the artist
 					while (this.chosen_word === undefined) {
 						let user_response = window.prompt(`Pick one of\n${json_data['options'].join('\n')}`);
 						this.chosen_word = (json_data['options'].includes(user_response)? user_response: undefined);

@@ -1,11 +1,15 @@
-<div class="container">
+<div class="container login-container">
 	<p>
-		<label for="">Username </label>
-		<input type="text" name="" id="" [(ngModel)]="username">
+		<mat-form-field appearance="standard">
+			<mat-label>Username</mat-label>
+			<input matInput type="text" name="" id="" [(ngModel)]="username"/>
+		</mat-form-field>
 	</p>
 	<p>
-		<label for="">Room Key </label>
-		<input type="text" name="" id="" [(ngModel)]="room_key"/>
+		<mat-form-field appearance="standard">
+			<mat-label>Room Key</mat-label>
+			<input matInput type="text" name="" id="" [(ngModel)]="room_key"/>
+		</mat-form-field>
 	</p>
-	<button type="submit" (click)="onClick()">Submit</button>
+	<button mat-raised-button color="primary" type="submit" (click)="onClick()">Play</button>
 </div>

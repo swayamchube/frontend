@@ -1,0 +1,7 @@
+.options-image {
+	border: 1px solid black;
+}
+
+.options-image:hover {
+	border: 3px solid green;
+}
