@@ -1,8 +1,19 @@
-<p>
-	<input type="text" [(ngModel)]="guessed_word"/> 
-	<button type="submit" (click)="onSubmitGuess()">Guess</button>
-</p>
-
-<app-chat #chatchild></app-chat>
-
-<img [src]="image_uri" width="200px" height="200px"/>
+<div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;height: 450px;">
+	<img [src]="image_uri" style="margin: 50px;" width="200px" height="200px"/>
+	<div style="display: flex; flex-direction: column;align-self:flex-end;width: 300px;height: inherit;    background-color: rgb(180, 255, 230);justify-content: flex-end;border-radius: 10px;">
+		<div class="chatbox">
+		<p *ngFor="let g of guessses" style="border-radius: 5px;background-color:rgb(8, 123, 255);padding: 5px;color: white;margin: 10px;">
+			{{g}}
+		</p>
+		</div>
+		<div style="display: flex;flex-direction: row;margin: 10px;align-self: flex-end;">
+			<input
+			type="text"
+			matInput style="margin:5px;font-size: large;"
+			[(ngModel)]="guessed_word"
+			/> 
+			
+			<button type="submit" mat-raised-button color="primary" (click)="onSubmitGuess()">Guess</button>
+		</div>
+	</div>
+</div>
